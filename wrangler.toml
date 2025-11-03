@@ -1,0 +1,27 @@
+name = "cf-workers-sub"
+main = "_worker.js"
+compatibility_date = "2024-11-06"
+
+# 绑定你的 KV：把 id 改为你自己的命名空间 ID
+kv_namespaces = [
+  { binding = "KV", id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" }
+]
+
+[vars]
+# —— 基本订阅配置 ——
+TOKEN = "auto"
+SUBAPI = "https://SUBAPI.cmliussss.net"
+SUBCONFIG = "https://raw.githubusercontent.com/cmlu/ACL4SSR/main/Clash/config/ACL4SSR_Online_MultiCountry.ini"
+SUBNAME = "CF-Workers-SUB"
+# GUEST = "guesttoken"         # 可选：开启访客只读
+
+# —— Grok（xAI）——
+GROK_BASE_URL = "https://api.x.ai/v1"
+GROK_SOURCE_URL = "https://example.com/your-subscription-or-page"  # ← 改成你的来源
+# GROK_PROMPT 可不配，默认就是你给的中文提示词
+# RELOAD_KEY = "some-strong-secret"    # 可选：手动触发鉴权
+WANT_HTTP_SUBS = "1"                   # 接受 http(s) 订阅链接；要禁用填 "0"
+
+[triggers]
+# 每小时执行一次
+crons = ["0 * * * *"]
